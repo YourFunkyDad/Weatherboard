@@ -1,3 +1,18 @@
 body {
     background-color: blanchedalmond;
 }
+
+.hero {
+    font-family: 'Courier New', Courier, monospace;
+    background-image: url(../images/Weather-BG.jpeg);
+    background-position: 0%;
+    background-size: auto;
+}
+
+form {
+    border-width: 2px;
+    border-color: black;
+    border-style: solid;
+    border-radius: 3px;
+    padding: 10px;
+}

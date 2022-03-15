@@ -1,15 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link rel="stylesheet" href="./assets/style/style.css" />
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <!--Links-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+      integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
+      crossorigin="anonymous"/>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/open-iconic/1.1.1/font/css/open-iconic-bootstrap.min.css"/> 
+    <link rel="stylesheet" href="./assets/style/style.css"/>
+
+
+    <!--End of Links-->
     <title>Weatherboard</title>
   </head>
 
 <body>
 
+<!--Jumbotron-->
+  <header>
+    <div class="hero justify-content-center text-black mx-0 px-1">
+      <div class="row">
+        <div class="col-12 col-md-12 col-md-12">
+          <h1 class="display-4 text-center w-100">Weatherboard</h1>
+        </div>
+      </div>
+    </div>
+  </header>
+<!--End Jumbotron-->
+
+<!--Containers-->
+  <main class="container-fluid">
+    
+    <div class="row">
+      <div class="search-bar"></div>
+        <form class="col-md-4" id="city-search-form">
+          <h2>Search by City</h2>
+          <input id="city" type="text" autofocus= "true" class="form/input"/>
+          <button class="btn btn-primary" id="search-btn" type="submit">Search</button>
+        </form>
+      <div class="past-search border" id="past-search-buttons"></div>  
+    </div>
+
+    <div class="col-12 col-md-8">
+      <div class="row border select-city" id="current-forecast">
+        <div class="col-12">
+          <h3 id="searched-city"></h3>
+          <div id="current-weather-container" class="list-group"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row border" id="five-day-forecast">
+      <h2 class="col-12" id="forecast"></h2>
+      <div class="d-flex" id="five-day-container"></div>
+    </div>
+
+
+  </main>
 </body>
 
 <footer>
