@@ -10,9 +10,10 @@ body {
 }
 
 form {
-    border-width: 2px;
+    background-color: white;
+    border-width: 1px;
     border-color: black;
     border-style: solid;
-    border-radius: 3px;
+    border-radius: 2px;
     padding: 10px;
 }
