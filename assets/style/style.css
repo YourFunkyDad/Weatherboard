@@ -17,3 +17,19 @@ form {
     border-radius: 2px;
     padding: 10px;
 }
+
+.row {
+    border-color: black;
+    border-radius: 2px;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    padding: 15px;
+}
+
+.card {
+    border-color: black;
+    border-radius: 2px;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    padding: 15px;
+}
