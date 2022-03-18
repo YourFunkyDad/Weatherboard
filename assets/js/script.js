@@ -2,7 +2,37 @@ const apiKey = "f8bdee5d7df0d8080f755ec842a46146";
 var userFormEl = $("#citySearch");
 
 // API Call: api.openweathermap.org/data/2.5/weather?q=London,uk&APPID=f8bdee5d7df0d8080f755ec842a46146
+// Updating Current Weather
+var updateCurrentWeather = function(response) {
+    var tempEl = $("#currentFeel");
+    var iconEl = $("#currentIcon");
+    var humidityEl = $("#currentHumidity");
+    var windSpeedEl = $("#currentWindSpeed");
+    var dateEl = $("currentNow");
 
+    var currentFeel = response.main.temp;
+    var currentIcon = response.weather[0].icon;
+    var currentNow = new Date(currentTimeCodeUnix*1000).toLocaleDateString("en-US");
+    var currentTimeCodeUnix = response.dt;
+    var currentWindSpeed = response.wind.speed;
+    var currentHumidity = response.main.humidity;
+
+    dateEl.text(currentNow);
+    tempEl.text(currentFeel);
+    iconEl.attr("src", "https://openweathermap.org/img/w/" + currentIcon + ".png");
+    humidityEl.text(currentHumidity);
+    windSpeedEl.text(currentWindSpeed);
+
+    var currentTimeCodeUnix = response.dt;
+    var s = new Date(currentTimeCodeUnix*1000).toLocaleDateString("en-US")
+    
+    var locationArr = {
+        lat: response.coord.lat,
+        long: response.coord.lon
+    }
+
+    return locationArr;
+};
 // Calling Index
 var getIndex = function(response) {
     var idx = 0
@@ -77,40 +107,6 @@ var updateSearchHistory = function(city) {
     };
 }
 
-
-
-// Updating Current Weather
-var updateCurrentWeather = function(response) {
-    var iconEl = $("#currentIcon");
-    var humidityEl = $("#currentHumidity");
-    var windSpeedEl = $("#currentWindSpeed");
-    var dateEl = $("currentDate");
-    var tempEl = $("currentTemp");
-
-    var currentIcon = response.weather[0].icon;
-    var currentDate = new Date(currentTimeCodeUnix*1000).toLocaleDateString("en-US");
-    var currentTimeCodeUnix = response.dt;
-    var currentTemp = response.main.temp;
-    var currentWindSpeed = response.wind.speed;
-    var currentHumidity = response.main.humidity;
-
-    dateEl.text(currentDate);
-    tempEl.text(currentTemp);
-    iconEl.attr("src", "https://openweathermap.org/img/w/" + currentIcon + ".png");
-    humidityEl.text(currentHumidity);
-    windSpeedEl.text(currentWindSpeed);
-
-    var currentTimeCodeUnix = response.dt;
-    var s = new Date(currentTimeCodeUnix*1000).toLocaleDateString("en-US")
-    
-    var locationArr = {
-        lat: response.coord.lat,
-        long: response.coord.lon
-    }
-
-    return locationArr;
-};
-
 var get5DayForecast = function(cityName) {
     var forecastContainerEl = $("#day-forecast");
     // clear any existing data
@@ -175,8 +171,6 @@ var formSubmitHandler = function(event) {
     target.blur();
 };
 
-getCurrentWeather("Cincinnati");
-$("button").click(formSubmitHandler);
 $('#citySearch').keypress(function(event){
     var keycode = (event.keyCode ? event.keyCode : event.which);
     if(keycode == '13'){
@@ -188,3 +182,6 @@ $('#citySearch').keypress(function(event){
         }
     }
 });
+
+getCurrentWeather("Cincinnati");
+$("button").click(formSubmitHandler);
