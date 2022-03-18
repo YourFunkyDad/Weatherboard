@@ -157,4 +157,34 @@ var get5DayForecast = function(cityName) {
     })
 };
 
+var formSubmitHandler = function(event) {
+    target = $(event.target);
+    targetId = target.attr("id");
+
+    if (targetId === "citySearchList") {
+        var city = target.text();
+    } else if (targetId === "search-submit") {
+        var city = $("#citySearch").val();
+    };
+
+    if (city) {
+        getCurrentWeather(city);
+    } else {
+        alert("Please Enter a City");
+    }
+    target.blur();
+};
+
 getCurrentWeather("Cincinnati");
+$("button").click(formSubmitHandler);
+$('#citySearch').keypress(function(event){
+    var keycode = (event.keyCode ? event.keyCode : event.which);
+    if(keycode == '13'){
+        var city = $("citySearch").val();
+        if (city) {
+            getCurrentWeather(city);
+        } else {
+            alert("Please Enter City");
+        }
+    }
+});
