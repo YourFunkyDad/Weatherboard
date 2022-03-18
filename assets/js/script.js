@@ -21,6 +21,20 @@ var getIndex = function(response) {
     };
 };
 
+var updateUVIndex = function(val) {
+    var uvEl = $("#currentUV");
+    uvEl.text(val);
+    uvEl.removeClass();
+
+    if (val < 3) {
+        uvEl.addClass("bg-success text-uppercase p-3");
+    } else if (val < 6) {
+        uvEl.addClass("bg-warning text-uppercase p-3");
+    } else {
+        uvEl.addClass("bg-danger text-uppercase p-3");
+    };
+};
+
 
 // Fetching CurrentWeather
 var getCurrentWeather = function (cityName) {
