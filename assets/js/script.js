@@ -51,6 +51,18 @@ var getCurrentWeather = function (cityName) {
     })
 };
 
+var updateSearchHistory = function(city) {
+    var searchHistory = JSON.parse(localStorage.getItem("searchHistory"));
+    searchHistory.unshift(city);
+    searchHistory.pop();
+    localStorage.setItem("searchHistory",JSON.stringify(searchHistory));
+
+    var listItems = $(".list-group-item");
+    for (l in listItems) {
+        listItems[l].textContent = searchHistory[l];
+    };
+}
+
 
 
 // Updating Current Weather
@@ -83,6 +95,52 @@ var updateCurrentWeather = function(response) {
     }
 
     return locationArr;
+};
+
+var get5DayForecast = function(cityName) {
+    var forecastContainerEl = $("#day-forecast");
+    // clear any existing data
+    forecastContainerEl.html("");
+    
+    var apiUrl = "https://api.openweathermap.org/data/2.5/forecast?q=" + cityName + "&units=imperial&appid=" + apiKey;
+
+    fetch(apiUrl).then(function(response) {
+        // dont need if response ok since already checked earlier
+        response.json().then(function(response) {
+            // build 
+            // variable to hold index of the first date change
+            var idx = getIndex(response);
+    
+            for (i=0;i<5;i++) {
+                // based on the index value above, find the index value for the 5 days (add 4 so the printed data values are for the middle of the day)
+                var actualIdx = i * 8 + idx + 4;
+                if (actualIdx>39) {actualIdx = 39};
+    
+                // get data from api at Unix and convert
+                var timeCodeUnix = response.list[actualIdx].dt;
+                var time = new Date(timeCodeUnix*1000).toLocaleDateString("en-US");
+                var icon = response.list[actualIdx].weather[0].icon;
+                var temp = response.list[actualIdx].main.temp;
+                var humidity = response.list[actualIdx].main.humidity;
+    
+                var cardEl = $("<div>").addClass("col-2 card bg-primary pt-2");
+                var cardTitleEl = $("<h5>").addClass("card-title").text(time);
+                var divEl = $("<div>").addClass("weather-icon");
+                var cardIconEl = $("<img>").addClass("p-2").attr("src","https://openweathermap.org/img/w/" + icon + ".png");
+                var cardTempEl = $("<p>").addClass("card-text").text("Temp: " + temp + " " + String.fromCharCode(176) + "F");
+                var cardHumidityEl = $("<p>").addClass("card-text mb-2").text("Humidity: " + humidity + "%");
+    
+                cardEl.append(cardTitleEl);
+                divEl.append(cardIconEl);
+                cardEl.append(divEl);
+                cardEl.append(cardTempEl);
+                cardEl.append(cardHumidityEl);
+                forecastContainerEl.append(cardEl);
+            }
+        });
+    }).catch(function(error) {
+        alert("Unable to connect to OpenWeather");
+    })
 };
 
 getCurrentWeather("Cincinnati");
