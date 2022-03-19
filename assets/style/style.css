@@ -16,15 +16,15 @@ form {
     border-color: black;
     border-style: solid;
     border-radius: 2px;
-    padding: 10px;
+    padding: 15px;
 }
 
 .row {
     border-color: black;
     border-radius: 2px;
-    border-bottom-width: 1px;
-    border-bottom-style: solid;
-    padding: 15px;
+    border-width: 1px;
+    border-style: solid;
+    padding: 25px;
 }
 
 .card {
@@ -32,7 +32,7 @@ form {
     border-radius: 2px;
     border-bottom-width: 1px;
     border-bottom-style: solid;
-    padding: 15px;
+    padding: 25px;
 }
 
 .search-bar {
