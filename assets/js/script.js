@@ -99,7 +99,6 @@ var updateUVIndex = function(val) {
     };
 };
 
-
 // Fetching CurrentWeather
 var getCurrentWeather = function (cityName) {
     var apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&units=imperial&appid=" + apiKey;
@@ -128,6 +127,24 @@ var getCurrentWeather = function (cityName) {
         alert("Problems Connecting to OpenWeather!");
     })
 };
+
+var buildSearchHistory = function() {
+    var searchHistory = JSON.parse(localStorage.getItem("searchHistory"));
+    if (searchHistory == null) {
+        searchHistory = [""];
+        localStorage.setItem("searchHistory", JSON.stringify(searchHistory));
+    }
+    var groupContainer = $(".list-group");
+    groupContainer.html("");
+    for (i in searchHistory) {
+        var buttonEl = $("<button>")
+        .addClass("list-group-item list-group-item-action")
+        .attr("id", "citySearchList")
+        .attr("type", "button")
+        .text(searchHistory[i]);
+    groupContainer.append(buttonEl);
+    }
+}
 
 var updateSearchHistory = function(city) {
     var searchHistory = JSON.parse(localStorage.getItem("searchHistory"));
@@ -205,6 +222,11 @@ var formSubmitHandler = function(event) {
     target.blur();
 };
 
+getDateTime();
+buildSearchHistory();
+getCurrentWeather("Cincinnati");
+$("button").click(formSubmitHandler);
+
 $('#citySearch').keypress(function(event){
     var keycode = (event.keyCode ? event.keyCode : event.which);
     if(keycode == '13'){
@@ -216,6 +238,3 @@ $('#citySearch').keypress(function(event){
         }
     }
 });
-
-getCurrentWeather("Cincinnati");
-$("button").click(formSubmitHandler);
