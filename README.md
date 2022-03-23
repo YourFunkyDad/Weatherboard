@@ -2,7 +2,7 @@
 
 Search function is only working when manually clicking the search button, not when clicking the enter button. 
 
-Only Cincinnati and Orlando are showing up in the recent search history drop down bar, but there is not a search result list being dynamically created. 
+A recent search history is being created, but only 1 available box to click from the most recent search. 
 
 Homepage:
 ![Screenshot](./assets/images/Weatherboard.png)
