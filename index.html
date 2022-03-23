@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <!--Links-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="./assets/style/style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+    <!--End of Links-->
+    <title>Weatherboard</title>
+  </head>
+
+<body>
+
+<!--Jumbotron-->
+  <header class="hero">
+    <div class="hero justify-content-center text-black mx-0 px-1">
+      <div class="row">
+        <div class="col-12 col-md-12 col-md-12">
+          <h1 class="display-4 text-center w-100">Weatherboard</h1>
+          <div id="digital-clock"></div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+<!--End Jumbotron-->
+
+<!--Containers-->
+
+<main>
+  <!--Search Column-->
+  <div class="container-fluid">
+    <div class="row">
+      <!--Search Bar and Histories-->
+      <div id="userInterface" class="search-bar col-3 d-flex">
+        <div class="form-group w-100">
+          <h2>Search by City</h2>
+            <div class="p-0 col-10 input-group">
+              <input id="citySearch" type="text" autofocus= "true" class="form-control" placeholder="Enter City"/>
+              <div id="" class="input-group-append">
+                <button class="btn btn-primary" id="search-submit" type="button">Search</button>
+              </div>
+            </div>
+          <div class="mt-4 list-group"></div>  
+        </div>
+      </div>
+
+      <!--Current City Data-->
+      <div class="col-9">
+        <div class="mx-auto card">
+          <div class="card-body">
+            <h1 class="card-title mb-2"><span id="currentCity"></span><img id="currentIcon" src="" alt="Weather icon"></h1>
+              <p class="card-text">Temperature: <span id="currentFeel" ></span> &#8457</p>
+              <p class="card-text">Humidity: <span id="currentHumidity" ></span>%</p>
+              <p class="card-text">Wind Speed: <span id="currentWindSpeed" ></span> mph</p>
+              <p class="card-text">UV Index: <span id="currentUV" ></span></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12">
+        <div id="day-forecast" class="row justify-content-around text-dark m-2 bg-white">
+          
+          <div class="col-2 card">
+            <h6 class="card-title"></h6>
+            <i class="fa fa-sun"></i>
+            <p class="card-text">Temp: </p>
+            <p class="card-text">Humidity: </p>
+          </div>
+
+          <div class="col-2 card bg-primary">
+            <h6 class="card-title"></h6>
+            <i class="fa fa-sun"></i>
+            <p class="card-text">Temp: </p>
+            <p class="card-text">Humidity: </p>
+          </div>
+          
+          <div class="col-2 card bg-white">
+            <h6 class="card-title"></h6>
+            <i class="fa fa-sun"></i>
+            <p class="card-text">Temp: </p>
+            <p class="card-text">Humidity: </p>
+          </div>
+          
+          <div class="col-2 card bg-white">
+            <h6 class="card-title"></h6>
+            <i class="fa fa-sun"></i>
+            <p class="card-text">Temp: </p>
+            <p class="card-text">Humidity: </p>
+          </div>
+          
+          <div class="col-2 card bg-white">
+            <h6 class="card-title"></h6>
+            <i class="fa fa-sun"></i>
+            <p class="card-text">Temp: </p>
+            <p class="card-text">Humidity: </p>
+          </div>
+          
+        </div>
+      </div>
+
+
+
+
+</div>
+</div>
+
+  
+</main>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
+  <script src="./assets/js/script.js"></script>
+</body>
+
+<footer>
+
+</footer>
+
+</html>
